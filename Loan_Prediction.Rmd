@@ -1,0 +1,87 @@
+---
+title: "<center><span style='font-size:50px; color: green;'>Loan Prediction</span></center>"
+author: "<center><span style='font-size:25px'>Shivam Agrawal</span></center>"
+output: 
+  html_document:
+    code_folding: hide
+    theme: lumen
+    highlight: tango
+---
+
+<br>
+
+<center>
+<b><i><span style="font-size:35px; color:blue;">DREAM HOUSING FINANCE COMPANY</span></i></b>
+</center>
+
+<br>
+
+<center>
+  ![](image2.webp)
+</center>
+
+<br>
+
+# 1 Introduction
+
+<br>
+
+<center>![](image1.jpg)</center>
+
+<br>
+
+<p><span style="font-size:20px;"><b>Dream Housing Finance company</b> deals in all kinds of home loans. They have presence across all urban, semi urban and rural areas. Customer first applies for home loan and after that company validates the customer eligibility for loan. </span></p>
+
+<p><span style="font-size:20px;">Company wants to automate the loan eligibility process (real time) based on customer detail provided while filling online application form. These details are Gender, Marital Status, Education, Number of Dependents, Income, Loan Amount, Credit History and others. To automate this process, they have provided a dataset to identify the customers segments that are eligible for loan amount so that they can specifically target these customers.</p>
+
+<br>
+
+```{r, message=FALSE, warning=FALSE}
+# Graphic options for plots and disabling scientific notation
+options(repr.plot.width=15, repr.plot.length=8, scipen = 999)
+
+### LIBRARIES #######################
+library(dplyr)
+library(ggplot2)
+```
+
+<br>
+
+# 2 Data
+
+<br>
+
+<p><span style="font-size:20px;">To predict the housing loan we have the data which has the following features: </span></p>
+
+* <span style="font-size:20px;"> **Loan_ID**: Unique loan id </span>
+* <span style="font-size:20px;"> **Gender**: Male/Female </span>
+* <span style="font-size:20px;"> **Married**: Applicant is married or not </span>
+* <span style="font-size:20px;"> **Dependents**: Number of dependents </span>
+* <span style="font-size:20px;"> **Education**: Applicant education (Graduate/ Under Graduate) </span>
+* <span style="font-size:20px;"> **Self_Employed**: Self employed yes/no </span>
+* <span style="font-size:20px;"> **ApplicantIncome**: Applicant income </span>
+* <span style="font-size:20px;"> **CoapplicantIncome**: Co-applicant income </span>
+* <span style="font-size:20px;"> **LoanAmount**: Loan amounts in thousands </span>
+* <span style="font-size:20px;"> **Loan_Amount_Term**: Term of loan in months </span>
+* <span style="font-size:20px;"> **Credit_History**: Credit history meets guidelines </span>
+* <span style="font-size:20px;"> **Property_Area**: Urban/Semi Urban/Rural </span>
+* <span style="font-size:20px;"> **Loan_Status**: Loan approved yes/no </span>
+
+<br>
+
+```{r}
+### READING DATA ########################
+trainData <- read.csv(file = "train_ctrUa4K.csv", header = T, stringsAsFactors = T)
+testData <- read.csv(file = "test_lAUu6dG.csv", header = T, stringsAsFactors = T)
+```
+
+<br>
+
+```{r}
+### DIMENSIONS OF DATASET ################
+dim(trainData)
+
+### STRUCTURE OF DATASET ################
+str(trainData)
+```
+
